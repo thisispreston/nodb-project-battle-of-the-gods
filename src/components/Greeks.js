@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
 import './Greeks.css'
 
 class Greeks extends React.Component {
@@ -7,39 +6,30 @@ class Greeks extends React.Component {
     super(props)
 
     this.state = {
-      greeks: [],
+
     }
   }
 
-  componentDidMount () {
-    axios.get('/api/greeks').then( response => {
-      this.setState({ 
-        greeks: response.data
-      })
-    })
-  }
-
-  chooseGreek = (arg) => {
-    this.props.populatePlayerOne(arg)
+  selectChamp = (arg) => {
+    this.props.selectGreekChamp(arg)
   }
 
   render () { 
-    const { greeks } = this.state
-    console.log(this.state)
-
-    let greekList = greeks.map( god =>{
+    const { greeks } = this.props
+    
+    let greekList = greeks.map( e => {
       return (
         <div
-          key={god.id}
+          key={e.id}
           className="godCard"
         >
           <h1>
-            {god.name}
+            {e.name}
           </h1>
           <img
-            src={god.image}
-            alt={god.name}
-            onClick={this.chooseGreek(god)}
+            src={e.image}
+            alt={e.name}
+            onClick={() => this.selectChamp(e)}
           />
         </div>
       )
@@ -48,7 +38,7 @@ class Greeks extends React.Component {
     return ( 
       <div>
         <h1>
-          THE GREEKS ARE HERE
+          GO GREEKS!
         </h1>
         {greekList}
       </div>

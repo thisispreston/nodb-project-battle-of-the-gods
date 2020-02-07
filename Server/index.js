@@ -1,15 +1,19 @@
-const express = require('express');
-const ctrl = require('./controller');
-const PORT = 4050;
+const express = require('express')
+const greekCtrl = require('./greekController')
+const romanCtrl = require('./romanController')
+const PORT = 4050
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
 
-//ENDPOINTS
-app.get('/api/greeks', ctrl.getGreeks);
-app.get('/api/romans', ctrl.getRomans);
+//  GREEK ENDPOINTS
+app.get('/api/greeks', greekCtrl.getGreeks)
+app.post('/api/greek-champ', greekCtrl.selectChamp)
 
 
+//  ROMAN ENDPOINTS
+app.get('/api/romans', romanCtrl.getRomans)
+app.post('/api/roman-champ', romanCtrl.selectChamp)
 
-app.listen( PORT, () => console.log(`olympus on port ${PORT}`));
+app.listen( PORT, () => console.log(`olympus on port ${PORT}`))

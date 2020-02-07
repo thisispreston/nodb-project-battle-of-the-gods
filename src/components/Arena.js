@@ -1,47 +1,69 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import Greeks from './Greeks';
-import PlayerOne from './PlayerOne'
-import PlayerTwo from './PlayerTwo'
+import GreekChamp from './GreekChamp'
+import RomanChamp from './RomanChamp'
 import Romans from './Romans'
 
 class Arena extends Component {
   constructor(props){
     super(props)
     this.state = {
-      playerOne: {},
-      playerTwo: {}
+      greeks: [],
+      greekChamp: [],
+      romans: [],
+      romanChamp: [],
     }
   }
 
-  populatePlayerOne = (arg) => {
-    this.setState({
-      playerOne: arg
+  componentDidMount () {
+    axios.get('/api/greeks').then( response => {
+      this.setState({ 
+        greeks: response.data
+      })
+    })
+    axios.get('/api/romans').then( response => {
+      this.setState({ 
+        romans: response.data,
+      })
     })
   }
 
-  populatePlayerTwo = (arg) => {
-    this.setState({
-      playerTwo: arg
+// Select Champion
+  selectGreekChamp = (arg) => {
+    axios.post('/api/greek-champ', { arg }).then( res => {
+      this.setState({
+        greekChamp: res.data
+      })
+    })
+  }
+  selectRomanChamp = (arg) => {
+    axios.post('/api/roman-champ', { arg }).then( res => {
+      this.setState({
+        romanChamp: res.data
+      })
     })
   }
 
-  render () { 
+  render () {
     return ( 
       <div>
-        <h1>
-          Arena
-        </h1>
         <Greeks
-          populatePlayerOne={this.populatePlayerOne}
+          greeks={this.state.greeks}
+          selectGreekChamp={this.selectGreekChamp}
         />
-        <PlayerOne
-          playerOne={this.state.playerOne}
-        />
-        <PlayerTwo
-          playerTwo={this.state.playerTwo}
-        />
+        <div className='BattleField'>
+          Arena
+          <GreekChamp
+            greekChamp={this.state.greekChamp}
+          />
+          <RomanChamp
+            romanChamp={this.state.romanChamp}
+          />
+        </div>
         <Romans
-          populatePlayerTwo={this.populatePlayerTwo}
+          romans={this.state.romans}
+          selectRomanChamp={this.selectRomanChamp}
         />
       </div>
     )
