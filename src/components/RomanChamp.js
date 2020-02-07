@@ -21,9 +21,13 @@ class RomanChamp extends React.Component {
   //     input: e.target.value
   //   })
   // }
+
+  removeChamp = (arg) => {
+    this.props.removeRomanChamp(arg)
+  }
   
   render () {
-    const {name, image, taunt} = this.props.romanChamp
+    const {id, name, image, taunt } = this.props.romanChamp
 
     return(
       <div>
@@ -36,6 +40,7 @@ class RomanChamp extends React.Component {
         <img
           src={image}
           alt={name}
+          onDoubleClick={() => this.removeChamp(id)}
         />
         <p className='taunt'>
           {taunt}

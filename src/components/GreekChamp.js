@@ -21,9 +21,13 @@ class GreekChamp extends React.Component {
   //     input: e.target.value
   //   })
   // }
+
+  removeChamp = (arg) => {
+    this.props.removeGreekChamp(arg)
+  }
   
   render () {
-    const {name, image, taunt} = this.props.greekChamp
+    const {id, name, image, taunt} = this.props.greekChamp
 
     return(
       <div>
@@ -36,6 +40,7 @@ class GreekChamp extends React.Component {
         <img
           src={image}
           alt={name}
+          onDoubleClick={() => this.removeChamp(id)}
         />
         <p className='taunt'>
           {taunt}

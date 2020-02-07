@@ -25,5 +25,16 @@ module.exports = {
 
     res.status(200).send(champ[0])
   },
+  removeChamp: (req, res) => {
+    const { id } = req.params
+
+    const index = romans.findIndex( e => {
+      return e.id === +id
+    })
+
+    romans.splice(index, 1)
+    
+    res.status(200).send(romans)
+  },
 }
 

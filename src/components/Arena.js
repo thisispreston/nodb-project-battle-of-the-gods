@@ -45,6 +45,22 @@ class Arena extends Component {
     })
   }
 
+// To the Underworld for the losers!
+  removeGreekChamp = (id) => {
+    axios.delete(`/api/greeks/${id}`).then( res => {
+      this.setState({
+        greeks: res.data
+      })
+    })
+  }
+  removeRomanChamp = (id) => {
+    axios.delete(`/api/romans/${id}`).then( res => {
+      this.setState({
+        romans: res.data
+      })
+    })
+  }
+
   render () {
     return ( 
       <div>
@@ -56,9 +72,11 @@ class Arena extends Component {
           Arena
           <GreekChamp
             greekChamp={this.state.greekChamp}
+            removeGreekChamp={this.removeGreekChamp}
           />
           <RomanChamp
             romanChamp={this.state.romanChamp}
+            removeRomanChamp={this.removeRomanChamp}
           />
         </div>
         <Romans

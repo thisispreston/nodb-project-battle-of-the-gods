@@ -25,5 +25,17 @@ module.exports = {
 
     res.status(200).send(champ[0])
   },
+  removeChamp: (req, res) => {
+    const { id } = req.params
+
+    const index = greeks.findIndex( e => {
+      return e.id === +id
+    })
+
+    greeks.splice(index, 1)
+    console.log(greeks)
+
+    res.status(200).send(greeks)
+  },
 }
 
