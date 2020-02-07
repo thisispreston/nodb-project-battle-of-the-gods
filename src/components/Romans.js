@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 import './Romans.css'
 
-class Romans extends Component {
+class Romans extends React.Component {
   constructor(props){
     super(props)
 

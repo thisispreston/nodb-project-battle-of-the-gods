@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 import './Greeks.css'
 
-class Greeks extends Component {
+class Greeks extends React.Component {
   constructor(props){
     super(props)
 
