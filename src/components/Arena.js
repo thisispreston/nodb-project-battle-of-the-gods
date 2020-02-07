@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Greek from './Greek';
+import Greeks from './Greeks';
 import PlayerOne from './PlayerOne'
+import PlayerTwo from './PlayerTwo'
+import Romans from './Romans'
 
 class Arena extends Component {
   constructor(props){
@@ -9,25 +11,40 @@ class Arena extends Component {
       playerOne: {},
       playerTwo: {}
     }
-    this.populatePlayerOne = this.populatePlayerOne.bind(this)
   }
 
-   populatePlayerOne(arg){
-     this.setState({
-       playerOne: arg
-     })
-   }
-   
+  populatePlayerOne = (arg) => {
+    this.setState({
+      playerOne: arg
+    })
+  }
 
-  render() { 
+  populatePlayerTwo = (arg) => {
+    this.setState({
+      playerTwo: arg
+    })
+  }
+
+  render () { 
     return ( 
       <div>
-        <h1>Arena</h1>
-        <PlayerOne playerOne={this.state.playerOne} />
-
-        <Greek populatePlayerOne={this.populatePlayerOne}/>
+        <h1>
+          Arena
+        </h1>
+        <Greeks
+          populatePlayerOne={this.populatePlayerOne}
+        />
+        <PlayerOne
+          playerOne={this.state.playerOne}
+        />
+        <PlayerTwo
+          playerTwo={this.state.playerTwo}
+        />
+        <Romans
+          populatePlayerTwo={this.populatePlayerTwo}
+        />
       </div>
-     );
+    )
   }
 }
  

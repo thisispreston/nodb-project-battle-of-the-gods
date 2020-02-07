@@ -1,6 +1,6 @@
 const express = require('express');
 const ctrl = require('./controller');
-const PORT = 4000;
+const PORT = 4050;
 
 const app = express();
 
@@ -11,4 +11,4 @@ app.get('/api/greeks', ctrl.getGreeks);
 app.get('/api/romans', ctrl.getRomans);
 
 
-app.listen( PORT, () => console.log(`bingpot on port ${PORT}`));
+app.listen( PORT, () => console.log(`olympus on port ${PORT}`));

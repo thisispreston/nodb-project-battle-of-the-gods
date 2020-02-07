@@ -1,13 +1,13 @@
 import React from 'react';
 
-const PlayerOne = (props) =>{
-  const {name, image} = props.playerOne;
-  console.log('player one props', props)
+const PlayerTwo = (props) =>{
+  const {name, image} = props.playerTwo;
+  console.log('player two props', props)
 
   return(
     <div>
       <h1>
-        player one
+        player two
       </h1>
       <p>
         {name}
@@ -20,4 +20,4 @@ const PlayerOne = (props) =>{
   )
 }
  
-export default PlayerOne;
+export default PlayerTwo;
