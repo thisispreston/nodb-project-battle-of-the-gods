@@ -27,13 +27,13 @@ module.exports = {
   },
   editTaunt: (req, res) => {
     const { id } = req.params
-    const { arg } = req.body
+    const { newTaunt } = req.body
     
     const index = romans.findIndex( e => {
       return e.id === +id
     })
 
-    romans[index].taunt = arg
+    romans[index].taunt = newTaunt
 
     res.status(200).send(romans)
   },

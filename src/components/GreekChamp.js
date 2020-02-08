@@ -33,7 +33,8 @@ class GreekChamp extends React.Component {
   // }
   
   render () {
-    const { id, name, image } = this.props.greekChamp
+    const { id, name, image, taunt } = this.props.greekChamp
+    const { editGreekTaunt } = this.props
 
     return(
       <div>
@@ -56,7 +57,7 @@ class GreekChamp extends React.Component {
               />
               <button
                 onClick={() => {
-                  this.props.editGreekTaunt(id, this.state.input)
+                  editGreekTaunt(id, this.state.input)
                   this.toggleEdit()
                 }}
               >
@@ -67,7 +68,7 @@ class GreekChamp extends React.Component {
             <p
               onDoubleClick={this.toggleEdit}
             >
-              {this.props.greekChamp.taunt}
+              {taunt}
             </p>
           )}
         </div>

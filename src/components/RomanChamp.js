@@ -13,7 +13,7 @@ class RomanChamp extends React.Component {
   // These two are for editing the taunt
   toggleEdit = () => {
     this.setState({
-      isEditing: !this.state.isEditing
+      isEditing: !this.state.isEditing,
     })
   }
   handleChange = (e) => {
@@ -33,7 +33,8 @@ class RomanChamp extends React.Component {
   // }
   
   render () {
-    const {id, name, image } = this.props.romanChamp
+    const { id, name, image, taunt } = this.props.romanChamp
+    const { editRomanTaunt } = this.props
 
     return(
       <div>
@@ -56,7 +57,7 @@ class RomanChamp extends React.Component {
               />
               <button
                 onClick={() => {
-                  this.props.editRomanTaunt(id, this.state.input)
+                  editRomanTaunt(id, this.state.input)
                   this.toggleEdit()
                 }}
               >
@@ -67,7 +68,7 @@ class RomanChamp extends React.Component {
             <p
               onDoubleClick={this.toggleEdit}
             >
-              {this.props.romanChamp.taunt}
+              {taunt}
             </p>
           )}
         </div>

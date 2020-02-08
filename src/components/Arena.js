@@ -51,7 +51,6 @@ class Arena extends Component {
       this.setState({
         greeks: res.data
       })
-      console.log(this.state.greeks)
     })
   }
   editRomanTaunt = (id, newTaunt) => {
