@@ -25,6 +25,18 @@ module.exports = {
 
     res.status(200).send(champ[0])
   },
+  editTaunt: (req, res) => {
+    const { id } = req.params
+    const { newTaunt } = req.body
+    
+    const index = greeks.findIndex( e => {
+      return e.id === +id
+    })
+
+    greeks[index].taunt = newTaunt
+
+    res.status(200).send(greeks)
+  },
   removeChamp: (req, res) => {
     const { id } = req.params
 
@@ -33,9 +45,13 @@ module.exports = {
     })
 
     greeks.splice(index, 1)
-    console.log(greeks)
 
     res.status(200).send(greeks)
+  }, //this one is for hp=0
+  swapOut: (req, res) => {
+    let champ = []
+
+    res.status(200).send(champ)
   },
 }
 

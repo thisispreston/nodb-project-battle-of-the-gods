@@ -10,24 +10,30 @@ class RomanChamp extends React.Component {
     }
   }
 
-  // toggleEdit = () => {
-  //   this.setState({
-  //     isEditing: !this.state.isEditing
-  //   })
-  // }
-
-  // handleChange = () => {
-  //   this.setState({
-  //     input: e.target.value
-  //   })
-  // }
-
-  removeChamp = (arg) => {
-    this.props.removeRomanChamp(arg)
+  // These two are for editing the taunt
+  toggleEdit = () => {
+    this.setState({
+      isEditing: !this.state.isEditing
+    })
   }
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+  }
+
+// Swap out champ
+  swapChamp = (arg) => {
+    this.props.swapRomanChamp(arg)
+  }
+
+// Delete killed champ, when hp=0 invoke this one
+  // removeChamp = (arg) => {
+  //   this.props.removeRomanChamp(arg)
+  // }
   
   render () {
-    const {id, name, image, taunt } = this.props.romanChamp
+    const {id, name, image } = this.props.romanChamp
 
     return(
       <div>
@@ -40,11 +46,31 @@ class RomanChamp extends React.Component {
         <img
           src={image}
           alt={name}
-          onDoubleClick={() => this.removeChamp(id)}
+          onDoubleClick={() => this.swapChamp(id)}
         />
-        <p className='taunt'>
-          {taunt}
-        </p>
+        <div>
+          {this.state.isEditing ? (
+            <div>
+              <input
+                onChange={this.handleChange}
+              />
+              <button
+                onClick={() => {
+                  this.props.editRomanTaunt(id, this.state.input)
+                  this.toggleEdit()
+                }}
+              >
+                Save Taunt
+              </button>
+            </div>
+          ) : (
+            <p
+              onDoubleClick={this.toggleEdit}
+            >
+              {this.props.romanChamp.taunt}
+            </p>
+          )}
+        </div>
       </div>
     )
   }

@@ -10,24 +10,30 @@ class GreekChamp extends React.Component {
     }
   }
 
-  // toggleEdit = () => {
-  //   this.setState({
-  //     isEditing: !this.state.isEditing
-  //   })
-  // }
-
-  // handleChange = () => {
-  //   this.setState({
-  //     input: e.target.value
-  //   })
-  // }
-
-  removeChamp = (arg) => {
-    this.props.removeGreekChamp(arg)
+// These two are for editing the taunt
+  toggleEdit = () => {
+    this.setState({
+      isEditing: !this.state.isEditing
+    })
   }
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+  }
+
+  // Swap Champ out
+  swapChamp = (arg) => {
+    this.props.swapGreekChamp(arg)
+  }
+
+// Delete killed champ, when hp=0 invoke this one
+  // removeChamp = (arg) => {
+  //   this.props.removeGreekChamp(arg)
+  // }
   
   render () {
-    const {id, name, image, taunt} = this.props.greekChamp
+    const { id, name, image } = this.props.greekChamp
 
     return(
       <div>
@@ -40,11 +46,31 @@ class GreekChamp extends React.Component {
         <img
           src={image}
           alt={name}
-          onDoubleClick={() => this.removeChamp(id)}
+          onDoubleClick={() => this.swapChamp(id)}
         />
-        <p className='taunt'>
-          {taunt}
-        </p>
+        <div>
+          {this.state.isEditing ? (
+            <div>
+              <input
+                onChange={this.handleChange}
+              />
+              <button
+                onClick={() => {
+                  this.props.editGreekTaunt(id, this.state.input)
+                  this.toggleEdit()
+                }}
+              >
+                Save Taunt
+              </button>
+            </div>
+          ) : (
+            <p
+              onDoubleClick={this.toggleEdit}
+            >
+              {this.props.greekChamp.taunt}
+            </p>
+          )}
+        </div>
       </div>
     )
   }

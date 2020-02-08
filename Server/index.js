@@ -10,11 +10,15 @@ app.use(express.json())
 //  GREEK ENDPOINTS
 app.get('/api/greeks', greekCtrl.getGreeks)
 app.post('/api/greek-champ', greekCtrl.selectChamp)
-app.delete('/api/greeks/:id', greekCtrl.removeChamp)
+app.put('/api/greeks/:id', greekCtrl.editTaunt)
+app.delete('/api/greeks/:id', greekCtrl.removeChamp) // if champ dies, hp=0, then delete from list
+app.delete('/api/greek-champ', greekCtrl.swapOut)
 
 //  ROMAN ENDPOINTS
 app.get('/api/romans', romanCtrl.getRomans)
 app.post('/api/roman-champ', romanCtrl.selectChamp)
-app.delete('/api/romans/:id', romanCtrl.removeChamp)
+app.put('/api/romans/:id', romanCtrl.editTaunt)
+app.delete('/api/romans/:id', romanCtrl.removeChamp)// if champ dies, hp=0, then delete from list
+app.delete('/api/roman-champ', romanCtrl.swapOut)
 
 app.listen( PORT, () => console.log(`olympus on port ${PORT}`))

@@ -25,6 +25,18 @@ module.exports = {
 
     res.status(200).send(champ[0])
   },
+  editTaunt: (req, res) => {
+    const { id } = req.params
+    const { arg } = req.body
+    
+    const index = romans.findIndex( e => {
+      return e.id === +id
+    })
+
+    romans[index].taunt = arg
+
+    res.status(200).send(romans)
+  },
   removeChamp: (req, res) => {
     const { id } = req.params
 
@@ -33,8 +45,13 @@ module.exports = {
     })
 
     romans.splice(index, 1)
-    
+
     res.status(200).send(romans)
+  }, //this one is for hp=0
+  swapOut: (req, res) => {
+    let champ = []
+
+    res.status(200).send(champ)
   },
 }
 
