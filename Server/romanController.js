@@ -6,48 +6,80 @@ const romans = [
     name: 'Jupiter',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/jupitermain-1.jpg',
     taunt: `Feel the thunder!`,
+    hp: 250,
+    attack: 50,
+    defense: 40,
+    heal: 20,
   },
   {
     id: 2,
     name: 'Neptune',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/neptunemain.jpg',
     taunt: `The seven seas belong to me!`,
+    hp: 230,
+    attack: 55,
+    defense: 35,
+    heal: 20,
   },
   {
     id: 3,
     name: 'Mars',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/marsmain.jpg',
     taunt: `I have a nice axe.`,
+    hp: 290,
+    attack: 50,
+    defense: 40,
+    heal: 20,
   },
   {
     id: 4,
     name: 'Diana',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/dianamain.jpg',
     taunt: `If we burn, you burn with us!`,
+    hp: 200,
+    attack: 45,
+    defense: 50,
+    heal: 30,
   },
   {
     id: 5,
     name: 'Ceres',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/ceresmain.jpg',
     taunt: `Dung happens; plant something in it.`,
+    hp: 175,
+    attack: 20,
+    defense: 25,
+    heal: 65,
   },
   {
     id: 6,
-    name: 'Apollo',
+    name: 'Hyperion',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/apollomain.jpg',
     taunt: `I see all under the sun.`,
+    hp: 210,
+    attack: 65,
+    defense: 15,
+    heal: 10,
   },
   {
     id: 7,
     name: 'Juno',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/junomain.jpg',
     taunt: `Girl power!`,
+    hp: 210,
+    attack: 30,
+    defense: 30,
+    heal: 45,
   },
   {
     id: 8,
     name: 'Mercury',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/mercurymain.jpg',
     taunt: `You fell for my trap.`,
+    hp: 215,
+    attack: 35,
+    defense: 20,
+    heal: 30,
   },
 ]
 
@@ -96,5 +128,26 @@ module.exports = {
 
     res.status(200).send(champ)
   },
+  // getAttacked: (req, res) => {
+  //   const { id } = req.params
+  //   const { atk } = req.body
+    
+  //   const index = romans.findIndex( e => {
+  //     return e.id === +id
+  //   })
+
+  //   romans[index].hp -= atk * (1 - (romans[index].defense / 100))
+  //   if (romans[index].hp < 0) {
+  //     // champ.splice(0, 1, {
+  //     //   id: 9,
+  //     //   name: 'Pluto',
+  //     //   image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
+  //     //   taunt: `Welcome to the underworld`,
+  //     // })
+  //     romans.splice(index, 1)
+  //   }
+  //   console.log(romans)
+  //   res.status(200).send({allRomans: romans, romanChamp: romans[index]})
+  // }
 }
 

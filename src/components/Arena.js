@@ -109,6 +109,24 @@ class Arena extends Component {
     }).catch( (err) => console.log(err))
   }
 
+// There are for attack buttons
+  // greekAtk = (atk) => {
+  //   axios.put(`/api/romans/${this.state.romanChamp.id}`, { atk }).then(res => {
+  //     console.log(res.data.allRomans)
+  //     this.setState({
+  //       romans: res.data.allRomans,
+  //       romanChamp: [res.data.romanChamp]
+  //     })
+  //   }).catch( (err) => console.log(err))
+  // }
+  // romanAtk = (id, atk) => {
+  //   axios.put(`/api/greeks/${id}`, { atk }).then(res => {
+  //     this.setState({
+  //       greeks: res.data
+  //     })
+  //   }).catch( (err) => console.log(err))
+  // }
+
   render () {
     return ( 
       <div className="body">
@@ -122,12 +140,14 @@ class Arena extends Component {
             greekChamp={this.state.greekChamp}
             editGreekTaunt={this.editGreekTaunt}
             swapGreekChamp={this.swapGreekChamp}
+            // greekAtk={this.greekAtk}
             // removeGreekChamp={this.removeGreekChamp}
           />
           <RomanChamp
             romanChamp={this.state.romanChamp}
             editRomanTaunt={this.editRomanTaunt}
             swapRomanChamp={this.swapRomanChamp}
+            // romanAtk={this.romanAtk}
             // removeRomanChamp={this.removeRomanChamp}
           />
         </div>
