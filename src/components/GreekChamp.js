@@ -15,6 +15,7 @@ class GreekChamp extends React.Component {
     this.setState({
       isEditing: !this.state.isEditing
     })
+    return this.props.greekChamp.taunt = this.state.input
   }
   handleChange = (e) => {
     this.setState({

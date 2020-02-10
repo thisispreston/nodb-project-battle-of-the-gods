@@ -11,18 +11,19 @@ class RomanChamp extends React.Component {
   }
 
 // Tried to get things to re-render
-  componentDidUpdate (prevProps, prevState) {
-    // console.log(prevProps, this.props)
-    if (prevProps !== this.props) {
-      this.render()
-    }
-  }
+  // componentDidUpdate (prevProps, prevState) {
+  //   // console.log(prevProps, this.props)
+  //   if (prevProps !== this.props) {
+  //     this.render()
+  //   }
+  // }
 
   // These two are for editing the taunt
   toggleEdit = () => {
     this.setState({
       isEditing: !this.state.isEditing,
     })
+    return this.props.romanChamp.taunt = this.state.input
   }
   handleChange = (e) => {
     this.setState({
