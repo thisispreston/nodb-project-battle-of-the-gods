@@ -5,7 +5,7 @@ class Greeks extends React.Component {
     super(props)
 
     this.state = {
-
+      input:``,
     }
   }
 
@@ -13,8 +13,14 @@ class Greeks extends React.Component {
     this.props.selectGreekChamp(arg)
   }
 
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+  }
+
   render () { 
-    const { greeks } = this.props
+    const { greeks, findGreek } = this.props
     
     let greekList = greeks.map( e => {
       return (
@@ -36,9 +42,22 @@ class Greeks extends React.Component {
 
     return ( 
       <div className="gods-column">
-        <h1>
+        <h1 className="column-title">
           GREEKS
         </h1>
+        <div className="search-bar">
+          <input
+            className="search-input"
+            placeholder="Search by name"
+            onChange={this.handleChange}
+          />
+          <button
+            className="search-button"
+            onClick={() => findGreek(this.state.input)}
+          >
+            Search
+          </button>
+        </div>
         {greekList}
       </div>
     );

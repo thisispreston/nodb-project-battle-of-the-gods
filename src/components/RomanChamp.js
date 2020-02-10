@@ -10,15 +10,7 @@ class RomanChamp extends React.Component {
     }
   }
 
-// Tried to get things to re-render
-  // componentDidUpdate (prevProps, prevState) {
-  //   // console.log(prevProps, this.props)
-  //   if (prevProps !== this.props) {
-  //     this.render()
-  //   }
-  // }
-
-  // These two are for editing the taunt
+// These two are for editing the taunt
   toggleEdit = () => {
     this.setState({
       isEditing: !this.state.isEditing,
@@ -44,7 +36,7 @@ class RomanChamp extends React.Component {
   render () {
     const { id, name, image, taunt } = this.props.romanChamp
     const { editRomanTaunt } = this.props
-    console.log(this.props)
+    
     return(
       <div className="champ-card">
         <h1 className="champ-title">
@@ -62,6 +54,7 @@ class RomanChamp extends React.Component {
           {this.state.isEditing ? (
             <div>
               <input
+                placeholder="New taunt here"
                 onChange={this.handleChange}
               />
               <button

@@ -47,12 +47,19 @@ const greeks = [
     id: 8,
     name: 'Demeter',
     image: 'https://vignette.wikia.nocookie.net/dawn-of-gods/images/7/76/Demeter_Summon.jpg/revision/latest?cb=20160622151343',
-    taunt: `Are you hungry for the grain of my disdain.`,
+    taunt: `You will taste the grain of my disdain.`,
   },
 ]
 
 module.exports = {
   getGreeks: (req, res) => {
+    if (req.query.name) {
+      let filteredGods = greeks.filter(el => {
+          return el.name === req.query.name
+      })
+      return res.status(200).send(filteredGods)
+    }
+
     res.status(200).send(greeks)
   },
   selectChamp: (req, res) => {

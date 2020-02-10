@@ -5,7 +5,7 @@ class Romans extends React.Component {
     super(props)
 
     this.state = {
-
+      input: ``,
     }
   }
 
@@ -13,8 +13,14 @@ class Romans extends React.Component {
     this.props.selectRomanChamp(arg)
   }
 
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+  }
+
   render () { 
-    const { romans } = this.props
+    const { romans, findRoman } = this.props
 
     let romanList = romans.map( e =>{
       return (
@@ -36,9 +42,22 @@ class Romans extends React.Component {
 
     return ( 
       <div className="gods-column">
-        <h1>
+        <h1 className="column-title">
           ROMANS
         </h1>
+        <div className="search-bar">
+          <input
+            className="search-input"
+            placeholder="Search by name"
+            onChange={this.handleChange}
+          />
+          <button
+            className="search-button"
+            onClick={() => {findRoman(this.state.input)}}
+          >
+            Search
+          </button>
+        </div>
         {romanList}
       </div>
     );

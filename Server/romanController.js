@@ -53,6 +53,13 @@ const romans = [
 
 module.exports = {
   getRomans: (req, res) => {
+    if (req.query.name) {
+      let filteredGods = romans.filter(el => {
+          return el.name === req.query.name
+      })
+      return res.status(200).send(filteredGods)
+    }
+
     res.status(200).send(romans)
   },
   selectChamp: (req, res) => {

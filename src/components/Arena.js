@@ -94,13 +94,28 @@ class Arena extends Component {
   //   }).catch( () => console.log(err))
   // }
 
+  findGreek = (name) => {
+    axios.get(`/api/greeks?name=${name}`).then( response => {
+      this.setState({ 
+        greeks: response.data
+      })
+    }).catch( (err) => console.log(err))
+  }
+  findRoman = (name) => {
+    axios.get(`/api/romans?name=${name}`).then( response => {
+      this.setState({ 
+        romans: response.data
+      })
+    }).catch( (err) => console.log(err))
+  }
+
   render () {
     return ( 
       <div className="body">
         <Greeks
-          className="Greeks"
           greeks={this.state.greeks}
           selectGreekChamp={this.selectGreekChamp}
+          findGreek={this.findGreek}
         />
         <div className='Battlefield'>
           <GreekChamp
@@ -117,9 +132,9 @@ class Arena extends Component {
           />
         </div>
         <Romans
-          className="Romans"
           romans={this.state.romans}
           selectRomanChamp={this.selectRomanChamp}
+          findRoman={this.findRoman}
         />
       </div>
     )

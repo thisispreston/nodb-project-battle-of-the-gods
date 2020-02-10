@@ -54,6 +54,7 @@ class GreekChamp extends React.Component {
           {this.state.isEditing ? (
             <div>
               <input
+                placeholder="New taunt here"
                 onChange={this.handleChange}
               />
               <button
