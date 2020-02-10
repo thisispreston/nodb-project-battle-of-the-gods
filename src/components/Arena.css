@@ -6,13 +6,19 @@
   text-align: center;
 }
 
+.godCard {
+  width: 200px;
+  border-top: 2px solid #f8e0dc;
+  border-bottom: 2px solid #f8e0dc;
+}
+
 .godCard > img {
   width: 125px;
   height: 125px;
 }
 
 .Battlefield {
-  height: 1500px;
+  height: 1600px;
   width: 70%;
   background-image: url(https://uhdpapers.com/wp-content/uploads/2019/04/storm-clouds.jpg);
   background-size: 100% 100%;
@@ -26,13 +32,52 @@
 }
 
 .gods-column {
+  padding-top: 20px;
   width: 15%;
   color: #d88572;
-  background-color: #301F38;
+  background-color: #294284;
   display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
-	align-items: stretch;
+	align-items: center;
 	align-content: stretch;
+}
+
+
+.champ-card > img {
+  width: 300px;
+  height: 300px;
+  border: 5px solid #301F38;
+}
+
+.champ-card {
+  margin: 25px;
+  color: #301F38;
+  text-shadow: 1px 1px 10px white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.champ-title {
+  font-size: 40px;
+  color: #f8e0dc;
+  text-shadow: 1px 1px 10px black;
+
+}
+
+.godName {
+  font-size: 60px;
+  font-weight: 900;
+  text-shadow: 2px 2px 10px white;
+  border-top: 2px solid #f8e0dc;
+
+}
+
+.taunt {
+  width: 450px;
+  font-size: 40px;
+  color: white;
+  text-shadow: 2px 2px 10px black;
 }

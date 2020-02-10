@@ -1,5 +1,4 @@
 import React from 'react'
-import './Greeks.css'
 
 class Greeks extends React.Component {
   constructor(props){

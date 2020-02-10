@@ -1,5 +1,4 @@
 import React from 'react';
-import "./RomanChamp.css"
 
 class RomanChamp extends React.Component {
   constructor (props) {
@@ -8,6 +7,14 @@ class RomanChamp extends React.Component {
     this.state = {
       isEditing: false,
       input: '',
+    }
+  }
+
+// Tried to get things to re-render
+  componentDidUpdate (prevProps, prevState) {
+    // console.log(prevProps, this.props)
+    if (prevProps !== this.props) {
+      this.render()
     }
   }
 
@@ -36,7 +43,7 @@ class RomanChamp extends React.Component {
   render () {
     const { id, name, image, taunt } = this.props.romanChamp
     const { editRomanTaunt } = this.props
-
+    console.log(this.props)
     return(
       <div className="champ-card">
         <h1 className="champ-title">

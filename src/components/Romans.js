@@ -1,5 +1,4 @@
 import React from 'react'
-import './Romans.css'
 
 class Romans extends React.Component {
   constructor(props){

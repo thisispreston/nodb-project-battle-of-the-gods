@@ -22,12 +22,12 @@ class Arena extends Component {
       this.setState({ 
         greeks: response.data
       })
-    }).catch( () => alert("Failed to appease the Greek gods."))
+    }).catch( (err) => console.log(err))
     axios.get('/api/romans').then( response => {
       this.setState({ 
         romans: response.data,
       })
-    }).catch( () => alert("Failed to appease the Roman gods."))
+    }).catch( (err) => console.log(err))
   }
 
 // Select Champion
@@ -36,14 +36,14 @@ class Arena extends Component {
       this.setState({
         greekChamp: res.data
       })
-    }).catch( () => alert("No Greek champion responded."))
+    }).catch( (err) => console.log(err))
   }
   selectRomanChamp = (arg) => {
     axios.post('/api/roman-champ', { arg }).then( res => {
       this.setState({
         romanChamp: res.data
       })
-    }).catch( () => alert("No Roman champion responded."))
+    }).catch( (err) => console.log(err))
   }
 
 // Edit the taunts
@@ -52,14 +52,14 @@ class Arena extends Component {
       this.setState({
         greeks: res.data
       })
-    }).catch( () => alert("Your Greek taunt has failed."))
+    }).catch( (err) => console.log(err))
   }
   editRomanTaunt = (id, newTaunt) => {
     axios.put(`/api/romans/${id}`, { newTaunt }).then(res => {
       this.setState({
         romans: res.data
       })
-    }).catch( () => alert("Your Roman taunt has failed."))
+    }).catch( (err) => console.log(err))
   }
 
 // Swap Champ out
@@ -68,14 +68,14 @@ class Arena extends Component {
       this.setState({
         greekChamp: res.data
       })
-    }).catch( () => alert("Your Greek champion has not left arena!"))
+    }).catch( (err) => console.log(err))
   }
   swapRomanChamp = (arg) => {
     axios.delete(`/api/roman-champ`, { arg }).then( res => {
       this.setState({
         romanChamp: res.data
       })
-    }).catch( () => alert("Your Roman champion has not left arena!"))
+    }).catch( (err) => console.log(err))
   }
 
 // To the Underworld for the losers!
@@ -84,14 +84,14 @@ class Arena extends Component {
   //     this.setState({
   //       greeks: res.data
   //     })
-  //   })
+  //   }).catch( () => console.log(err))
   // }
   // removeRomanChamp = (id) => {
   //   axios.delete(`/api/romans/${id}`).then( res => {
   //     this.setState({
   //       romans: res.data
   //     })
-  //   })
+  //   }).catch( () => console.log(err))
   // }
 
   render () {

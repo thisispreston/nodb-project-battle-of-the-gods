@@ -1,5 +1,4 @@
 import React from 'react';
-import "./GreekChamp.css"
 
 class GreekChamp extends React.Component {
   constructor (props) {

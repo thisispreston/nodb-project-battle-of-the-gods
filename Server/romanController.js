@@ -9,33 +9,45 @@ const romans = [
   },
   {
     id: 2,
+    name: 'Neptune',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/neptunemain.jpg',
+    taunt: `The seven seas belong to me!`,
+  },
+  {
+    id: 3,
     name: 'Mars',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/marsmain.jpg',
     taunt: `I have a nice axe.`,
   },
   {
-    id: 3,
+    id: 4,
     name: 'Diana',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/dianamain.jpg',
     taunt: `If we burn, you burn with us!`,
   },
   {
-    id: 4,
+    id: 5,
     name: 'Ceres',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/ceresmain.jpg',
     taunt: `Dung happens; plant something in it.`,
   },
   {
-    id: 5,
+    id: 6,
     name: 'Apollo',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/apollomain.jpg',
     taunt: `I see all under the sun.`,
   },
   {
-    id: 6,
+    id: 7,
     name: 'Juno',
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/junomain.jpg',
     taunt: `Girl power!`,
+  },
+  {
+    id: 8,
+    name: 'Mercury',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/mercurymain.jpg',
+    taunt: `You fell for my trap.`,
   },
 ]
 
