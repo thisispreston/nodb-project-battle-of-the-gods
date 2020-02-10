@@ -36,9 +36,9 @@ class Greeks extends React.Component {
     })
 
     return ( 
-      <div>
+      <div className="gods-column">
         <h1>
-          GO GREEKS!
+          GREEKS
         </h1>
         {greekList}
       </div>

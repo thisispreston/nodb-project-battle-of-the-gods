@@ -1,0 +1,38 @@
+
+.body {
+	display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.godCard > img {
+  width: 125px;
+  height: 125px;
+}
+
+.Battlefield {
+  height: 1500px;
+  width: 70%;
+  background-image: url(https://uhdpapers.com/wp-content/uploads/2019/04/storm-clouds.jpg);
+  background-size: 100% 100%;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-start;
+  align-content: stretch;
+  text-align: center;
+}
+
+.gods-column {
+  width: 15%;
+  color: #d88572;
+  background-color: #301F38;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./RomanChamp.css"
 
 class RomanChamp extends React.Component {
   constructor (props) {
@@ -37,8 +38,8 @@ class RomanChamp extends React.Component {
     const { editRomanTaunt } = this.props
 
     return(
-      <div>
-        <h1>
+      <div className="champ-card">
+        <h1 className="champ-title">
           Roman Champion
         </h1>
         <p className='godName'>
@@ -66,6 +67,7 @@ class RomanChamp extends React.Component {
             </div>
           ) : (
             <p
+              className="taunt"
               onDoubleClick={this.toggleEdit}
             >
               {taunt}

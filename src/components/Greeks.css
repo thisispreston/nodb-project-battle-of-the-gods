@@ -1,7 +1,7 @@
+
 .godCard {
-  border: 1px solid green
+  width: 200px;
+  border-top: 2px solid #f8e0dc;
+  border-bottom: 2px solid #f8e0dc;
 }
 
-.godCard > img {
-  width: 10vw;
-}

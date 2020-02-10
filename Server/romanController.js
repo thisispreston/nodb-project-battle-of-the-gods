@@ -13,6 +13,30 @@ const romans = [
     image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/marsmain.jpg',
     taunt: `I have a nice axe.`,
   },
+  {
+    id: 3,
+    name: 'Diana',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/dianamain.jpg',
+    taunt: `If we burn, you burn with us!`,
+  },
+  {
+    id: 4,
+    name: 'Ceres',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/ceresmain.jpg',
+    taunt: `Dung happens; plant something in it.`,
+  },
+  {
+    id: 5,
+    name: 'Apollo',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/apollomain.jpg',
+    taunt: `I see all under the sun.`,
+  },
+  {
+    id: 6,
+    name: 'Juno',
+    image: 'https://www.gods-and-goddesses.com/wp-content/uploads/2019/11/junomain.jpg',
+    taunt: `Girl power!`,
+  },
 ]
 
 module.exports = {

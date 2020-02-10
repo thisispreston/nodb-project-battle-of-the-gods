@@ -36,9 +36,9 @@ class Romans extends React.Component {
     })
 
     return ( 
-      <div>
+      <div className="gods-column">
         <h1>
-          THE ROMANS RETURN!
+          ROMANS
         </h1>
         {romanList}
       </div>

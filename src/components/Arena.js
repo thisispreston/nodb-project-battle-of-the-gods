@@ -4,6 +4,7 @@ import Greeks from './Greeks';
 import GreekChamp from './GreekChamp'
 import RomanChamp from './RomanChamp'
 import Romans from './Romans'
+import './Arena.css'
 
 class Arena extends Component {
   constructor(props){
@@ -21,12 +22,12 @@ class Arena extends Component {
       this.setState({ 
         greeks: response.data
       })
-    })
+    }).catch( () => alert("Failed to appease the Greek gods."))
     axios.get('/api/romans').then( response => {
       this.setState({ 
         romans: response.data,
       })
-    })
+    }).catch( () => alert("Failed to appease the Roman gods."))
   }
 
 // Select Champion
@@ -35,14 +36,14 @@ class Arena extends Component {
       this.setState({
         greekChamp: res.data
       })
-    })
+    }).catch( () => alert("No Greek champion responded."))
   }
   selectRomanChamp = (arg) => {
     axios.post('/api/roman-champ', { arg }).then( res => {
       this.setState({
         romanChamp: res.data
       })
-    })
+    }).catch( () => alert("No Roman champion responded."))
   }
 
 // Edit the taunts
@@ -51,14 +52,14 @@ class Arena extends Component {
       this.setState({
         greeks: res.data
       })
-    })
+    }).catch( () => alert("Your Greek taunt has failed."))
   }
   editRomanTaunt = (id, newTaunt) => {
     axios.put(`/api/romans/${id}`, { newTaunt }).then(res => {
       this.setState({
         romans: res.data
       })
-    })
+    }).catch( () => alert("Your Roman taunt has failed."))
   }
 
 // Swap Champ out
@@ -67,14 +68,14 @@ class Arena extends Component {
       this.setState({
         greekChamp: res.data
       })
-    })
+    }).catch( () => alert("Your Greek champion has not left arena!"))
   }
   swapRomanChamp = (arg) => {
     axios.delete(`/api/roman-champ`, { arg }).then( res => {
       this.setState({
         romanChamp: res.data
       })
-    })
+    }).catch( () => alert("Your Roman champion has not left arena!"))
   }
 
 // To the Underworld for the losers!
@@ -95,13 +96,13 @@ class Arena extends Component {
 
   render () {
     return ( 
-      <div>
+      <div className="body">
         <Greeks
+          className="Greeks"
           greeks={this.state.greeks}
           selectGreekChamp={this.selectGreekChamp}
         />
-        <div className='BattleField'>
-          Arena
+        <div className='Battlefield'>
           <GreekChamp
             greekChamp={this.state.greekChamp}
             editGreekTaunt={this.editGreekTaunt}
@@ -116,6 +117,7 @@ class Arena extends Component {
           />
         </div>
         <Romans
+          className="Romans"
           romans={this.state.romans}
           selectRomanChamp={this.selectRomanChamp}
         />

@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const greekCtrl = require('./greekController')
 const romanCtrl = require('./romanController')
 const PORT = 4050
@@ -6,6 +7,7 @@ const PORT = 4050
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 //  GREEK ENDPOINTS
 app.get('/api/greeks', greekCtrl.getGreeks)
