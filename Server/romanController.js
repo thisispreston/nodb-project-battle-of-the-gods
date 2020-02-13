@@ -91,7 +91,7 @@ module.exports = {
       })
       return res.status(200).send(filteredGods)
     }
-
+    console.log('hit get')
     res.status(200).send(romans)
   },
   selectChamp: (req, res) => {
@@ -128,26 +128,29 @@ module.exports = {
 
     res.status(200).send(champ)
   },
-  // getAttacked: (req, res) => {
-  //   const { id } = req.params
-  //   const { atk } = req.body
-    
-  //   const index = romans.findIndex( e => {
-  //     return e.id === +id
-  //   })
+  getAttacked: (req, res) => {
+    console.log(req.params)
+    const { id } = req.params
+    const { atk } = req.body
 
-  //   romans[index].hp -= atk * (1 - (romans[index].defense / 100))
-  //   if (romans[index].hp < 0) {
-  //     // champ.splice(0, 1, {
-  //     //   id: 9,
-  //     //   name: 'Pluto',
-  //     //   image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
-  //     //   taunt: `Welcome to the underworld`,
-  //     // })
-  //     romans.splice(index, 1)
-  //   }
-  //   console.log(romans)
-  //   res.status(200).send({allRomans: romans, romanChamp: romans[index]})
-  // }
+    const index = romans.findIndex( e => {
+      return e.id === +id
+    })
+
+    romans[index].hp -= Number(atk) * (1 - (romans[index].defense / 100))
+
+    //USE THIS ON FRONT END
+    // if (romans[index].hp < 0) {
+    //   champ.splice(0, 1, {
+    //     id: 9,
+    //     name: 'Pluto',
+    //     image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
+    //     taunt: `Welcome to the underworld`,
+    //   })
+    //   romans.splice(index, 1)
+    // }
+    console.log(romans)
+    res.status(200).send(romans)
+  }
 }
 

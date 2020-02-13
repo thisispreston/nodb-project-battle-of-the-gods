@@ -23,7 +23,7 @@ class GreekChamp extends React.Component {
     })
   }
 
-  // Swap Champ out
+// Swap Champ out
   swapChamp = (arg) => {
     this.props.swapGreekChamp(arg)
   }
@@ -35,8 +35,7 @@ class GreekChamp extends React.Component {
   
   render () {
     const { id, name, image, taunt, hp, attack, defense, heal } = this.props.greekChamp
-    const { editGreekTaunt } = this.props
-    // const { greekAtk} = this.props
+    const { editGreekTaunt, greekAtk } = this.props
 
     return(
       <div className="champ-card">
@@ -76,7 +75,7 @@ class GreekChamp extends React.Component {
             </p>
           )}
         </div>
-        {/* <div
+        <div
           className="battle-Buttons"
         >
           <button
@@ -101,7 +100,7 @@ class GreekChamp extends React.Component {
           >
             HEAL: {heal}
           </button>
-        </div> */}
+        </div>
       </div>
     )
   }

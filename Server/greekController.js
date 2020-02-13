@@ -1,6 +1,6 @@
 let champ = []
 
-const greeks = [
+let greeks = [
   {
     id: 1,
     name: 'Zeus',
@@ -128,26 +128,27 @@ module.exports = {
 
     res.status(200).send(champ)
   },
-  // getAttacked: (req, res) => {
-  //   const { id } = req.params
-  //   const { atk } = req.body
+  getAttacked: (req, res) => {
+    const { id } = req.params
+    const { atk } = req.body
     
-  //   const index = greeks.findIndex( e => {
-  //     return e.id === +id
-  //   })
+    const index = greeks.findIndex( e => {
+      return e.id === +id
+    })
 
-  //   greeks[index].hp -= atk * (1 - (greeks[index].defense / 100))
-  //   if (greeks[index].hp < 0) {
-  //     // champ.splice(0, 1, {
-  //     //   id: 9,
-  //     //   name: 'Hades',
-  //     //   image: 'https://i.pinimg.com/originals/f7/3f/0a/f73f0adffaa00c92b8b6332a5598edb8.jpg',
-  //     //   taunt: `Thanks for the soul.`,
-  //     // })
-  //     greeks.splice(index, 1)
-  //   }
+    greeks[index].hp -= Number(atk) * (1 - (greeks[index].defense / 100))
 
-  //   res.status(200).send(greeks)
-  // }
+    if (greeks[index].hp < 0) {
+      champ.splice(0, 1, {
+        id: 9,
+        name: 'Hades',
+        image: 'https://i.pinimg.com/originals/f7/3f/0a/f73f0adffaa00c92b8b6332a5598edb8.jpg',
+        taunt: `Thanks for the soul.`,
+      })
+      greeks.splice(index, 1)
+    }
+
+    res.status(200).send(greeks)
+  }
 }
 

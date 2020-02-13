@@ -35,8 +35,7 @@ class RomanChamp extends React.Component {
   
   render () {
     const { id, name, image, taunt, hp, attack, defense, heal } = this.props.romanChamp
-    const { editRomanTaunt } = this.props
-    // const { romanAtk} = this.props
+    const { editRomanTaunt, romanAtk } = this.props
 
     return(
       <div className="champ-card">
@@ -76,7 +75,7 @@ class RomanChamp extends React.Component {
             </p>
           )}
         </div>
-        {/* <div
+        <div
           className="battle-Buttons"
         >
           <button
@@ -101,7 +100,7 @@ class RomanChamp extends React.Component {
           >
             HEAL: {heal}
           </button>
-        </div> */}
+        </div>
       </div>
     )
   }
