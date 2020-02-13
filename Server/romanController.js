@@ -91,7 +91,6 @@ module.exports = {
       })
       return res.status(200).send(filteredGods)
     }
-    console.log('hit get')
     res.status(200).send(romans)
   },
   selectChamp: (req, res) => {
@@ -122,14 +121,13 @@ module.exports = {
     romans.splice(index, 1)
 
     res.status(200).send(romans)
-  }, //this one is for hp=0
+  }, 
   swapOut: (req, res) => {
     let champ = []
 
     res.status(200).send(champ)
   },
   getAttacked: (req, res) => {
-    console.log(req.params)
     const { id } = req.params
     const { atk } = req.body
 
@@ -139,17 +137,17 @@ module.exports = {
 
     romans[index].hp -= Number(atk) * (1 - (romans[index].defense / 100))
 
-    //USE THIS ON FRONT END
-    // if (romans[index].hp < 0) {
-    //   champ.splice(0, 1, {
-    //     id: 9,
-    //     name: 'Pluto',
-    //     image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
-    //     taunt: `Welcome to the underworld`,
-    //   })
-    //   romans.splice(index, 1)
-    // }
-    console.log(romans)
+    // USE THIS ON FRONT END
+    if (romans[index].hp < 0) {
+      champ.splice(0, 1, {
+        id: 9,
+        name: 'Pluto',
+        image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
+        taunt: `Welcome to the underworld`,
+      })
+      romans.splice(index, 1)
+    }
+
     res.status(200).send(romans)
   }
 }

@@ -77,23 +77,8 @@ class Arena extends Component {
       })
     }).catch( (err) => console.log(err))
   }
-
-// To the Underworld for the losers!
-  // removeGreekChamp = (id) => {
-  //   axios.delete(`/api/greeks/${id}`).then( res => {
-  //     this.setState({
-  //       greeks: res.data
-  //     })
-  //   }).catch( () => console.log(err))
-  // }
-  // removeRomanChamp = (id) => {
-  //   axios.delete(`/api/romans/${id}`).then( res => {
-  //     this.setState({
-  //       romans: res.data
-  //     })
-  //   }).catch( () => console.log(err))
-  // }
-
+  
+  //Query bar
   findGreek = (name) => {
     axios.get(`/api/greeks?name=${name}`).then( response => {
       this.setState({ 
@@ -108,25 +93,107 @@ class Arena extends Component {
       })
     }).catch( (err) => console.log(err))
   }
+  
+  // To the Underworld for the losers!
+    removeGreekChamp = (id) => {
+      axios.delete(`/api/greeks/${id}`).then( res => {
+        this.setState({
+          greeks: res.data
+        })
+      }).catch( (err) => console.log(err))
+    }
+    removeRomanChamp = (id) => {
+      axios.delete(`/api/romans/${id}`).then( res => {
+        this.setState({
+          romans: res.data
+        })
+      }).catch( (err) => console.log(err))
+    }
 
   //These are for attack buttons
   greekAtk = (atk) => {
-    let newHp = this.state.romanChamp.hp - +atk * (1 - (this.state.romanChamp.defense / 100))
+    let { defense, hp, id } = this.state.romanChamp
 
-    // if (newHp <= 0) {
-    //   USE AXIOS DELETE CHAMP
-    // }
+    let newHp = hp - +atk * (1 - (defense / 100))
+
+    if (newHp <= 0) {
+      if (id !== 9) {
+        this.removeRomanChamp(id)
+      }
+      return this.setState({
+        romanChamp: {
+          id: 9,
+          name: 'Pluto',
+          image: 'https://as1.ftcdn.net/jpg/01/65/54/04/500_F_165540497_cFwiLdFRG1QAkiUWfdgP7dMyXxVSfNH8.jpg',
+          taunt: `Welcome to the underworld!`,
+          hp: '',
+          attack: '',
+          defense: '',
+          heal: '',
+        }
+      })
+    }
     
     this.setState({
       romanChamp: {...this.state.romanChamp, hp: newHp}
     })
   }
   romanAtk = (atk) => {
-    axios.put(`/api/greeks/${this.state.greekChamp.id}`, { atk }).then(res => {
-      this.setState({
-        greeks: res.data
+    let { defense, hp, id } = this.state.greekChamp
+
+    let newHp = hp - +atk * (1 - (defense / 100))
+
+    if (newHp <= 0) {
+      if (id !== 9) {
+        this.removeGreekChamp(id)
+      }
+      return this.setState({
+        greekChamp: {
+          id: 9,
+          name: 'Hades',
+          image: 'https://i.pinimg.com/originals/f7/3f/0a/f73f0adffaa00c92b8b6332a5598edb8.jpg',
+          taunt: `Thanks for the soul.`,
+          hp: '',
+          attack: '',
+          defense: '',
+          heal: '',
+        }
       })
-    }).catch( (err) => console.log(err))
+    }
+    
+    this.setState({
+      greekChamp: {...this.state.greekChamp, hp: newHp}
+    })
+  }
+
+  // Heal Buttons
+  greekHeal = () => {
+    let { heal, hp } = this.state.greekChamp
+    let newHp = hp + heal
+
+    if (newHp <= hp) {
+      return this.setState({
+        greekChamp: {...this.state.greekChamp, hp: newHp}
+      })
+    } else {
+      return this.setState({
+        greekChamp: {...this.state.greekChamp, hp: hp}
+      })
+    }
+  }
+  romanHeal = () => {
+    let { heal, hp } = this.state.romanChamp
+    let newHp = hp + heal
+
+    if (newHp <= hp) {
+      return this.setState({
+        romanChamp: {...this.state.romanChamp, hp: newHp}
+      })
+    } else {
+      return this.setState({
+        romanChamp: {...this.state.romanChamp, hp: hp}
+      })
+    }
   }
 
   render () {
@@ -143,14 +210,14 @@ class Arena extends Component {
             editGreekTaunt={this.editGreekTaunt}
             swapGreekChamp={this.swapGreekChamp}
             greekAtk={this.greekAtk}
-            // removeGreekChamp={this.removeGreekChamp}
+            greekHeal={this.greekHeal}
           />
           <RomanChamp
             romanChamp={this.state.romanChamp}
             editRomanTaunt={this.editRomanTaunt}
             swapRomanChamp={this.swapRomanChamp}
             romanAtk={this.romanAtk}
-            // removeRomanChamp={this.removeRomanChamp}
+            romanHeal={this.romanHeal}
           />
         </div>
         <Romans

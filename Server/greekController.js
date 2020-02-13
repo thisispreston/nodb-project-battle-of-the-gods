@@ -122,7 +122,7 @@ module.exports = {
     greeks.splice(index, 1)
 
     res.status(200).send(greeks)
-  }, //this one is for hp=0
+  },
   swapOut: (req, res) => {
     let champ = []
 

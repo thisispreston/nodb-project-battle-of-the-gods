@@ -35,7 +35,7 @@ class RomanChamp extends React.Component {
   
   render () {
     const { id, name, image, taunt, hp, attack, defense, heal } = this.props.romanChamp
-    const { editRomanTaunt, romanAtk } = this.props
+    const { editRomanTaunt, romanAtk, romanHeal } = this.props
 
     return(
       <div className="champ-card">
@@ -96,7 +96,7 @@ class RomanChamp extends React.Component {
           </button>
           <button
             className="heal"
-            // onClick={ FUNCTION}
+            onClick={() => romanHeal()}
           >
             HEAL: {heal}
           </button>

@@ -35,7 +35,7 @@ class GreekChamp extends React.Component {
   
   render () {
     const { id, name, image, taunt, hp, attack, defense, heal } = this.props.greekChamp
-    const { editGreekTaunt, greekAtk } = this.props
+    const { editGreekTaunt, greekAtk, greekHeal } = this.props
 
     return(
       <div className="champ-card">
@@ -96,7 +96,7 @@ class GreekChamp extends React.Component {
           </button>
           <button
             className="heal"
-            // onClick={ FUNCTION}
+            onClick={() => greekHeal()}
           >
             HEAL: {heal}
           </button>
