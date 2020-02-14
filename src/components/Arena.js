@@ -168,30 +168,36 @@ class Arena extends Component {
 
   // Heal Buttons
   greekHeal = () => {
-    let { heal, hp } = this.state.greekChamp
+    let { heal, hp, id } = this.state.greekChamp
     let newHp = hp + heal
+    const index = this.state.greeks.findIndex( e => {
+      return e.id === id
+    })
 
-    if (newHp <= hp) {
+    if (newHp <= this.state.greeks[index].hp) {
       return this.setState({
         greekChamp: {...this.state.greekChamp, hp: newHp}
       })
     } else {
       return this.setState({
-        greekChamp: {...this.state.greekChamp, hp: hp}
+        greekChamp: {...this.state.greekChamp, hp: this.state.greeks[index].hp}
       })
     }
   }
   romanHeal = () => {
-    let { heal, hp } = this.state.romanChamp
+    let { heal, hp, id } = this.state.romanChamp
     let newHp = hp + heal
+    const index = this.state.romans.findIndex( e => {
+      return e.id === id
+    })
 
-    if (newHp <= hp) {
+    if (newHp <= this.state.romans[index].hp) {
       return this.setState({
         romanChamp: {...this.state.romanChamp, hp: newHp}
       })
     } else {
       return this.setState({
-        romanChamp: {...this.state.romanChamp, hp: hp}
+        romanChamp: {...this.state.romanChamp, hp: this.state.romans[index].hp}
       })
     }
   }

@@ -75,31 +75,35 @@ class GreekChamp extends React.Component {
             </p>
           )}
         </div>
-        <div
-          className="battle-Buttons"
-        >
-          <button
-            className="hp"
+        <div className="battle-cards">
+          <div className="stats">
+            <div
+              className="hp"
+            >
+              HP: {hp}
+            </div>
+            <div
+              className="defense"
+            >
+              DEF: {defense}
+            </div>
+          </div>
+          <div
+            className="battle-buttons"
           >
-            HP: {hp}
-          </button>
-          <button
-            className="attack"
-            onClick={() => greekAtk(attack)}
-          >
-            ATK: {attack}
-          </button>
-          <button
-            className="defense"
-          >
-            DEF: {defense}
-          </button>
-          <button
-            className="heal"
-            onClick={() => greekHeal()}
-          >
-            HEAL: {heal}
-          </button>
+            <button
+              className="attack"
+              onClick={() => greekAtk(attack)}
+            >
+              ATK: {attack}
+            </button>
+            <button
+              className="heal"
+              onClick={() => greekHeal()}
+            >
+              HEAL: {heal}
+            </button>
+          </div>
         </div>
       </div>
     )

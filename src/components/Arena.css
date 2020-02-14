@@ -91,7 +91,32 @@
 
 .taunt {
   width: 450px;
-  font-size: 40px;
+  font-size: 30px;
   color: #83828C;
   text-shadow: 2px 2px 10px black;
+}
+
+.battle-cards {
+  align-items: center;
+  background-color: black;
+  opacity: .4;
+  font-size: 40px;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-start;
+  align-content: stretch;
+  text-align: center;
+}
+
+.battle-buttons {
+  height: 120px;
+  width: 80px;
+  display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: stretch;
+  /* align-content: space-between; */
+
 }
